@@ -41,6 +41,17 @@
         state: started
         enabled: true
 
+    - name: Remove all existing Docker containers
+      command: docker rm -f $(docker ps -aq)
+      ignore_errors: true
+      when: ansible_os_family == "Debian"
+
+    - name: Remove all existing Docker images
+      command: docker rmi -f $(docker images -aq)
+      ignore_errors: true
+      when: ansible_os_family == "Debian"
+    
+
     - name: Pull Docker image
       ansible.builtin.shell: docker pull mahmoudamr/jenkins_image:latest
       args:
