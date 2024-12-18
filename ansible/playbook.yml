@@ -42,12 +42,12 @@
         enabled: true
 
     - name: Remove all existing Docker containers
-      command: docker rm -f $(docker ps -aq)
+      shell: docker rm -f $(docker ps -aq)
       ignore_errors: true
       when: ansible_os_family == "Debian"
 
     - name: Remove all existing Docker images
-      command: docker rmi -f $(docker images -aq)
+      shell: docker rmi -f $(docker images -aq)
       ignore_errors: true
       when: ansible_os_family == "Debian"
     
