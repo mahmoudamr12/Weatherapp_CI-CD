@@ -42,11 +42,11 @@
         enabled: true
 
     - name: Pull Docker image
-      ansible.builtin.shell: docker pull nginx:latest
+      ansible.builtin.shell: docker pull mahmoudamr/jenkins_image:latest
       args:
         warn: false
 
     - name: Run Docker container
-      ansible.builtin.shell: docker run -d --name docker_container mahmoudamr/nanoimg_v2
+      ansible.builtin.shell: docker run -d --name docker_container mahmoudamr/jenkins_image
       args:
         warn: false
