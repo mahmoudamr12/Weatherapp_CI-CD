@@ -1,3 +1,3 @@
 [machines]
-192.168.56.101 ansible_user=vagrant ansible_private_key_file=/home/ubuntu1_private_key
-192.168.56.102 ansible_user=vagrant ansible_private_key_file=/home/ubuntu2_private_key
+192.168.56.101 ansible_user=vagrant ansible_private_key_file=/home/mahmoud/ubuntu1_private_key
+192.168.56.102 ansible_user=vagrant ansible_private_key_file=/home/mahmoud/ubuntu2_private_key
