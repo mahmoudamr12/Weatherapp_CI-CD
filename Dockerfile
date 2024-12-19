@@ -6,7 +6,8 @@ WORKDIR /app
 
 # Copy the requirements file (if it exists) to the working directory
 COPY requirements.txt .
-
+COPY index.html .
+COPY weather.html .
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
