@@ -54,6 +54,6 @@
         warn: false
 
     - name: Run Docker container
-      ansible.builtin.shell: docker run -d --name docker_container mahmoudamr/jenkins_image02
+      ansible.builtin.shell: docker run -p 5000:5000 -d --name docker_container mahmoudamr/jenkins_image02
       args:
         warn: false
