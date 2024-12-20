@@ -5,16 +5,12 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Copy the requirements file (if it exists) to the working directory
-COPY requirements.txt .
-COPY ./templates .
+COPY . /app
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the application code into the container
-COPY devops_task02_app.py .
 
 # Expose the port
 EXPOSE 5000
 
 # Set the default command to run your application
-CMD ["python", "devops_task02_app.py"]
+CMD ["python", "app.py"]
