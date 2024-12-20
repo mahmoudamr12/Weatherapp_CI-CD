@@ -49,11 +49,11 @@
     
 
     - name: Pull Docker image
-      ansible.builtin.shell: docker pull mahmoudamr/jenkins_image:latest
+      ansible.builtin.shell: docker pull mahmoudamr/jenkins_image02:latest
       args:
         warn: false
 
     - name: Run Docker container
-      ansible.builtin.shell: docker run -d --name docker_container mahmoudamr/jenkins_image
+      ansible.builtin.shell: docker run -d --name docker_container mahmoudamr/jenkins_image02
       args:
         warn: false
