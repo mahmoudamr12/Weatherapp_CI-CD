@@ -1,0 +1,73 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE_NAME = "mahmoudamr/jenkins_image02" // Docker image name
+
+    }
+    
+    stages {
+        
+        stage('Pull Code from Git') {
+            steps {
+                script {
+                    // Authenticate and pull the code from the private Git repository
+                    withCredentials([usernamePassword(credentialsId: 'github_credential', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) 
+                    {
+                           if (fileExists('devops_task02/.git')) {
+                            echo "Repository already cloned. Pulling latest changes..."
+                            sh '''
+                                cd devops_task02
+                                git reset --hard
+                                git clean -fd
+                                git pull origin main
+                            '''
+                        } else {
+                            echo "Cloning repository for the first time..."
+                            
+                            sh "git clone https://mahmoudamr12:$GIT_PASS@github.com/mahmoudamr12/devops_task02.git"
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image
+                    sh '''
+                        cd devops_task02
+                        docker build -t mahmoudamr/jenkins_image02:latest .
+                    '''
+                }
+            }
+        }
+
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+                script {
+                    // Log in to Docker Hub and push the Docker image
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub_cred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                        sh '''
+                            echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                            docker push ${DOCKER_IMAGE_NAME}:latest
+                        '''
+                    }
+                }
+            }
+        }
+
+        stage('Run Ansible Playbook') {
+            steps {
+                script {
+                    // Run the Ansible playbook
+                    sh '''
+                        cd devops_task02/ansible
+                        ansible-playbook -i inventory.yml playbook.yml
+                    '''
+                }
+            }
+        }
+    }
+}
