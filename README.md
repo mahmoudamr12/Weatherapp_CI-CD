@@ -1,21 +1,28 @@
-# Docker Automation with Jenkins and Ansible
+# Weather App - DevOps Implementation Project
 
-## Description
-This project automates the installation of Docker and runs a container serving a web application on two virtual machines. The automation leverages a Jenkins pipeline for CI/CD and an Ansible playbook for configuration management.
-
-## Table of Contents
-- [Project Overview](#project-overview)
-- [Technologies Used](#technologies-used)
-- [Screenshots](#screenshots)
-  - [First Machine](#first-machine)
-  - [Second Machine](#second-machine)
-- [How It Works](#how-it-works)
+This project demonstrates a complete CI/CD pipeline implementation for a simple Flask weather application. The pipeline includes containerization, automated builds, and deployment using various DevOps tools and practices.
 
 ## Project Overview
-This project is designed to simplify the deployment process for a web application by automating the following tasks:
-1. Installing Docker on two virtual machines.
-2. Configuring and running a containerized web application on each machine.
-3. Integrating Jenkins and Ansible for streamlined configuration and orchestration.
+
+The project implements a complete DevOps pipeline with the following components:
+
+- **GitHub** for source code management
+- **Jenkins** for continuous integration and deployment
+- **Docker** for containerization
+- **Vagrant** for local development environments
+- **Ansible** for configuration management and automated deployment
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- Ubuntu Server 20.04 LTS VM (Main Jenkins Server)
+- Git
+- GitHub Account
+- Jenkins (2.x or later)
+- Docker and Docker Hub Account
+- Vagrant (2.x or later)
+
 
 ## Technologies Used
 - **Jenkins**: Orchestrates the CI/CD pipeline to execute the automation process.
