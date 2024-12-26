@@ -24,6 +24,8 @@ Before you begin, ensure you have the following installed:
 - Vagrant (2.x or later)
 
 
+
+
 ## Technologies Used
 - **Jenkins**: Orchestrates the CI/CD pipeline to execute the automation process.
 - **Ansible**: Manages configurations and automates Docker setup on the virtual machines.
