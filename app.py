@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import io
 import os
 
+
 app = Flask(__name__)
 
 # Database file
