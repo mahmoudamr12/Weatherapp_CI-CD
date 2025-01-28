@@ -8,5 +8,6 @@ spec:
   ports:
   - protocol: TCP
     port: 80
-    targetPort: 80
-  type: LoadBalancer # Use NodePort or ClusterIP for internal services
+    targetPort: 5000
+    nodePort: 31019 # Specify the NodePort here
+  type: NodePort
