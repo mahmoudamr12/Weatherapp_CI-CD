@@ -28,7 +28,7 @@ jobs:
           docker push mahmoudamr/jenkins_image02:${{ github.sha }}
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build-and-push
 
     steps:
@@ -47,8 +47,10 @@ jobs:
 
       - name: Test Kubernetes Connection
         run: |
-          export KUBECONFIG=$(pwd)/kubeconfig
+          export KUBECONFIG=~/.kube/config
+          curl -k https://127.0.0.1:42003/version
           kubectl cluster-info dump
+          kubectl config view
 
       - name: Deploy to Kubernetes
         run: |
