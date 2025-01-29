@@ -42,7 +42,13 @@ jobs:
         run: |
           echo "${{ secrets.KUBECONFIG }}" | base64 --decode > kubeconfig
           export KUBECONFIG=$(pwd)/kubeconfig
+          kubectl config current-context  # Verify correct context
           kubectl version --client
+
+      - name: Test Kubernetes Connection
+        run: |
+          export KUBECONFIG=$(pwd)/kubeconfig
+          kubectl cluster-info
 
       - name: Deploy to Kubernetes
         run: |
