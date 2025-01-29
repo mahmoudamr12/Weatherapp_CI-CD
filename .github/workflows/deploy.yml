@@ -48,7 +48,7 @@ jobs:
       - name: Test Kubernetes Connection
         run: |
           export KUBECONFIG=$(pwd)/kubeconfig
-          kubectl cluster-info
+          kubectl cluster-info dump
 
       - name: Deploy to Kubernetes
         run: |
